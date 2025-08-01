@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Even Odd Finder App</title>
+    <style>
+        * {
+            font-size: 30px;
+            text-align: center;
+        }
+        body {
+            background-color: blue;
+            color: white;
+        }
+        input[type="number"] {
+            padding: 10px;
+            font-size: 24px;
+            border: 2px solid white;
+            transition: background-color 0.3s;
+        }
+        input[type="number"]:hover,
+        input[type="number"]:focus {
+            background-color: skyblue;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Even Odd Finder</h1>
+    <form onsubmit="find(event)">
+        <input type="number" id="num" placeholder="Enter an integer" required />
+        <br/><br/>
+        <input type="submit" value="Find Even/Odd" />
+    </form>
+    <h2 id="msg"></h2>
+
+    <script>
+        function find(event) {
+            event.preventDefault(); // Stop form submission
+            const input = document.getElementById("num");
+            const msg = document.getElementById("msg");
+            const value = input.value;
+
+            if (value === "") {
+                alert("Please enter an integer");
+                msg.innerHTML = "";
+                input.focus();
+                return;
+            }
+
+            const n = parseInt(value);
+            msg.innerHTML = (n % 2 === 0) ? "Even" : "Odd";
+
+            // Clear input after result
+            input.value = "";
+        }
+    </script>
+</body>
+</html>
